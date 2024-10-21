@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Member</title>
+</head>
+<body>
+    <h2>Edit Data Member Baru</h2>
+    <form action="/update/<%= member.id %>" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required value="<%= member.nama %>"><br>
+        <label for="Posisi">Posisi:</label>
+        <input type="text" name="Posisi" id="Posisi" value="<%= member.Posisi %>"><br>
+        <label for="LuckyNumber">NomorKeberuntungan</label>
+        <input type="number" name="LuckyNumber" id="LuckyNumber" value="<%= member.LuckyNumber %>"><br>
+        <button type="submit">Simpan</button>
+    </form>
+</body>
+</html>

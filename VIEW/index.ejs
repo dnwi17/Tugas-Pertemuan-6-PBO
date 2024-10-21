@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Node JS - MYSQL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+    /* Gradasi dari biru tua ke biru muda */
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+    color: #15c2d2;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: hwb(202 41% 15%);
+    margin-bottom: 30px;
+}
+
+table {
+    background-color: #21d1f9cc;
+    color: hsl(0, 82%, 41%);
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-warning, .btn-danger {
+    margin-right: 5px;
+}
+
+    </style>
+    <div class="container">
+        <h1 class="my-4 text-center">Daftar Member Idol Kpop</h1>
+
+        <% if (typeof message !== 'undefined' && message) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Posisi</th>
+                    <th>LuckyNumber</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% member.forEach(member => { %>
+                <tr>
+                    <td><%= member.id %></td>
+                    <td><%= member.nama %></td>
+                    <td><%= member.Posisi %></td>
+                    <td><%= member.LuckyNumber %></td>
+                    <td>
+                        <a href="/edit/<%= member.id %>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete/<%= member.id %>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <h2 class="mt-5">Tambah Member Baru</h2>
+        <form action="/add" method="post">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama:</label>
+                <input type="text" id="nama" name="nama" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="Posisi" class="form-label">Posisi:</label>
+                <input type="text" name="Posisi" id="Posisi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="LuckyNumber" class="form-label">LuckyNumber:</label>
+                <input type="number" name="LuckyNumber" id="LuckyNumber" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
